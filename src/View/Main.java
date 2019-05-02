@@ -25,11 +25,11 @@ public class Main {
         System.out.println(servico.getDescricao());
         System.out.println(servico.getValor());
         
-        Cliente cliente = new Cliente(1,"Victor",'M',"8986-4815","Av shozo Sakai");
+        Cliente cliente = new Cliente(1,"Victor","Av Shozo Sakai","08743-010");
         System.out.println(cliente.getNome());
         
-        Usuario usuario = new Usuario(1,"Victor","vitin");
-        System.out.println(usuario);
+        Usuario usuario = new Usuario(1,"Victor","12345678");
+        System.out.println(usuario.getNome());
     }
     
 }
