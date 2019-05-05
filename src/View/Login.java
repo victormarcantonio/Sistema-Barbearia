@@ -6,6 +6,7 @@
 package View;
 
 import Controller.LoginController;
+import Model.DAO.Banco;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -24,6 +25,7 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         controller = new LoginController(this);
+        Banco.inicia();
     }
 
     /**
@@ -103,9 +105,8 @@ public class Login extends javax.swing.JFrame {
 
     private void ButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEntrarActionPerformed
         // executa quando clico no botão
-        this.controller.fizTarefa();
-        System.out.println();//exibir campo usuario
-        System.out.println();// exibir campo senha
+       this.controller.entrarNoSistema();
+       
     }//GEN-LAST:event_ButtonEntrarActionPerformed
 
     private void TextSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextSenhaActionPerformed
