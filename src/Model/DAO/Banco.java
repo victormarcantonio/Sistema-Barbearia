@@ -51,7 +51,7 @@ public class Banco {
         Servico servico2 = new Servico(2, "Corte Degrade", 30);
         Servico servico3 = new Servico(3, "Barba Simples", 15);
         Servico servico4 = new Servico(4, "Barba Desenhada", 25);
-        Servico servico5 = new Servico(5, "Sombrancelhas", 10);
+        Servico servico5 = new Servico(5, "Sobrancelhas", 10);
         Servico servico6 = new Servico(6, "Penteados", 3);
 
         Agendamento agendamento1 = new Agendamento(1, cliente1, servico2, 30, "14/07/2018 09:30");
