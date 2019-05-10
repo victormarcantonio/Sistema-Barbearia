@@ -16,7 +16,7 @@ public class AgendamentoDAO {
     
     /**
      * Insere um agendamento dentro do banco de dados
-     * @param agendamento exige que seja passado um objeto do tipo agendamento
+     * @param  exige que seja passado um objeto do tipo agendamento
      */
     public void insert(Agendamento agendamento){
           

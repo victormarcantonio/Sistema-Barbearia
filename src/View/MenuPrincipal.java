@@ -6,6 +6,9 @@
 package View;
 
 import Controller.MenuPrincipalController;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -66,11 +69,21 @@ public class MenuPrincipal extends javax.swing.JFrame {
         MenuItemServico.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         MenuItemServico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icons/tesoura32-icon.png"))); // NOI18N
         MenuItemServico.setText("  Serviço");
+        MenuItemServico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemServicoActionPerformed(evt);
+            }
+        });
         MenuCadastro.add(MenuItemServico);
 
         MenuItemUsuario.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         MenuItemUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/icons/usuario32-icon.png"))); // NOI18N
         MenuItemUsuario.setText("  Usuario");
+        MenuItemUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemUsuarioActionPerformed(evt);
+            }
+        });
         MenuCadastro.add(MenuItemUsuario);
 
         jMenuBar1.add(MenuCadastro);
@@ -111,7 +124,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void MenuItemClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemClienteActionPerformed
-        // TODO add your handling code here:
+       this.controller.navegarParaCliente();
     }//GEN-LAST:event_MenuItemClienteActionPerformed
 
     private void MenuItemRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemRelatorioActionPerformed
@@ -119,8 +132,22 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuItemRelatorioActionPerformed
 
     private void MenuItemAgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemAgendaActionPerformed
-        this.controller.navegarParaAgenda();
+        try {
+            this.controller.navegarParaAgenda();
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_MenuItemAgendaActionPerformed
+
+    private void MenuItemUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemUsuarioActionPerformed
+       this.controller.navegarParaUsuario();
+    }//GEN-LAST:event_MenuItemUsuarioActionPerformed
+
+    private void MenuItemServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemServicoActionPerformed
+        this.controller.navegarParaServico();
+    }//GEN-LAST:event_MenuItemServicoActionPerformed
 
     /**
      * @param args the command line arguments

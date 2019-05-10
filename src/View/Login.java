@@ -7,6 +7,9 @@ package View;
 
 import Controller.LoginController;
 import Model.DAO.Banco;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -104,8 +107,15 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_TextUsuarioActionPerformed
 
     private void ButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonEntrarActionPerformed
-        // executa quando clico no botão
-       this.controller.entrarNoSistema();
+        try {
+            // executa quando clico no botão
+//       this.controller.entrarNoSistema();
+controller.autenticar();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
        
     }//GEN-LAST:event_ButtonEntrarActionPerformed
 

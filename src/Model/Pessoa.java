@@ -24,11 +24,28 @@ abstract public  class Pessoa {
     protected String email;
     protected String rg;
 
+    public Pessoa() {
+    }
+
+    
+    
     public Pessoa(int id, String nome) {
         this.id = id;
         this.nome = nome;
     }
 
+    public Pessoa(String nome) {
+        this.nome = nome;
+    }
+    
+
+    public Pessoa(String nome, String telefone, String rg) {
+        this.nome = nome;
+        this.telefone = telefone;
+        this.rg = rg;
+    }
+
+    
     public Pessoa(int id, String nome, char sexo, String dataNascimento, String telefone, String email, String rg) {
         this.id = id;
         this.nome = nome;

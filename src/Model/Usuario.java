@@ -21,11 +21,24 @@ public class Usuario extends Pessoa {
         this.senha = senha;
     }
 
+    public Usuario(String nome,String senha) {
+        super(nome);
+        this.senha = senha;
+    }
+    
+
   public Usuario(int id, String nome, char sexo,String dataNascimento,String telefone,String email,String rg,String senha,String nivelAcesso) {
         super(id, nome, sexo, dataNascimento, telefone, email, rg);
         this.senha = senha;
         this.nivelAcesso = nivelAcesso;
     }
+
+    public Usuario(String senha, int id, String nome) {
+        super(id, nome);
+        this.senha = senha;
+    }
+  
+  
 
     public String getSenha() {
         return senha;

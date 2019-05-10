@@ -20,6 +20,14 @@ public class Servico {
         this.valor = valor;
     }
 
+    public Servico(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public Servico() {
+    }
+
+    
     public String getDescricao() {
         return descricao;
     }

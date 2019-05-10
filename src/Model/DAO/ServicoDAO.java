@@ -5,8 +5,14 @@
  */
 package Model.DAO;
 
+
 import Model.Servico;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import util.ConectaBanco;
 
 /**
  *
@@ -15,12 +21,46 @@ import java.util.ArrayList;
 public class ServicoDAO {
     
     
+    private Connection connection;
+
+    public ServicoDAO(Connection connection) {
+        this.connection = connection;
+    }
+
+    public ServicoDAO() {
+    }
+    
+    
+    
+    
     /**
      * Insere um servico dentro do banco de dados
      * @param servico exige que seja passado um objeto do tipo servico
      */
-    public void insert(Servico servico){
-        Banco.servico.add(servico);
+    public void insert(Servico servico) throws SQLException{
+        String sql = "insert into servico(descricao)values('"+servico.getDescricao()+"')";
+        
+        PreparedStatement statement = connection.prepareStatement(sql);
+        statement.execute();
+        connection.close();
+    }
+    
+     public ArrayList<Servico> selectAll() throws SQLException, ClassNotFoundException{
+        
+         Connection connection = ConectaBanco.getConexao();
+        String sql = "select descricao from servico";
+      PreparedStatement statement = connection.prepareStatement(sql);
+       ResultSet rs = statement.executeQuery();
+       ArrayList<Servico>servicos = new ArrayList<Servico>();
+      
+     while(rs.next())
+     {
+        Servico servico = new Servico();
+         servico.setDescricao(rs.getString("descricao"));
+         servicos.add(servico);
+         
+     }
+     return servicos;
     }
     
     /**
@@ -59,9 +99,7 @@ public class ServicoDAO {
      * Retorna um arraylist com todos os servicos do banco de dados
      * @return uma lista com todos os registros do banco
      */
-    public ArrayList<Servico> selectAll(){
-        return Banco.servico;
-    }
+    
     
     /**
      * Compara se dois objetos tem a propriedade id igual

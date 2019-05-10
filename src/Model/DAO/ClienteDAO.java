@@ -6,7 +6,13 @@
 package Model.DAO;
 
 import Model.Cliente;
+import java.awt.List;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import util.ConectaBanco;
 
 /**
  *
@@ -15,12 +21,24 @@ import java.util.ArrayList;
 public class ClienteDAO {
     
     
-    /**
-     * Insere um cliente dentro do banco de dados
-     * @param cliente exige que seja passado um objeto do tipo cliente
-     */
-    public void insert(Cliente cliente){
-        Banco.cliente.add(cliente);
+   private Connection connection;
+
+    public ClienteDAO(Connection connection) {
+        this.connection = connection;
+    }
+
+    public ClienteDAO() {
+    }
+        
+    public void insert(Cliente cliente) throws SQLException, ClassNotFoundException{
+           
+          
+            String sql="insert into cliente(nome,endereco,telefone,rg) values('"+cliente.getNome()+"','"+cliente.getEndereco()+"','"+cliente.getTelefone()+"','"+cliente.getRg()+"');";
+            
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.execute();
+            connection.close();
+       
     }
     
     /**
@@ -59,8 +77,22 @@ public class ClienteDAO {
      * Retorna um arraylist com todos os clientes do banco de dados
      * @return uma lista com todos os registros do banco
      */
-    public ArrayList<Cliente> selectAll(){
-        return Banco.cliente;
+    public ArrayList<Cliente> selectAll() throws SQLException, ClassNotFoundException{
+        
+         Connection connection = ConectaBanco.getConexao();
+        String sql = "select nome from cliente";
+      PreparedStatement statement = connection.prepareStatement(sql);
+       ResultSet rs = statement.executeQuery();
+       ArrayList<Cliente>clientes = new ArrayList<Cliente>();
+      
+     while(rs.next())
+     {
+        Cliente cliente = new Cliente();
+         cliente.setNome(rs.getString("nome"));
+         clientes.add(cliente);
+         
+     }
+     return clientes;
     }
     
     /**

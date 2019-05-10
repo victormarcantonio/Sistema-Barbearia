@@ -1,0 +1,15 @@
+create table usuario
+(
+	id serial not null primary key,
+	usuario varchar(50) not null,
+	senha varchar(50) not null
+	
+);
+
+create table cliente(
+   id serial not null primary key,
+   nome varchar(50) not null,
+   endereco varchar (50) not null,
+   telefone varchar(14) not null,
+   rg varchar(20) not null	
+);

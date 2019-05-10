@@ -26,11 +26,11 @@ public class AgendaHelper {
 
     public void preencherTabela(ArrayList<Agendamento> agendamentos) {
         DefaultTableModel tableModel= (DefaultTableModel) view.getTableAgendamentos().getModel();
-        tableModel.setNumRows(0);
-        
-        //Percorrer a lista preenchendo o table model
-        for (Agendamento agendamento : agendamentos) {
-            tableModel.addRow(new Object[]{
+       tableModel.setNumRows(0);
+       
+       //Percorrer a lista preenchendo o table model
+       for (Agendamento agendamento : agendamentos) {
+          tableModel.addRow(new Object[]{
                agendamento.getId(),
                agendamento.getCliente().getNome(),
                agendamento.getServico().getDescricao(),
@@ -54,14 +54,16 @@ public class AgendaHelper {
         }
     }
 
-    public void preencherServicos(ArrayList<Servico> servicos) {
+   public void preencherServicos(ArrayList<Servico> servicos) {
            DefaultComboBoxModel comboBoxModel =  (DefaultComboBoxModel) view.getJComboBoxServico().getModel();
            
            for (Servico servico : servicos) {
-            comboBoxModel.addElement(servico);
-        }
+           comboBoxModel.addElement(servico);
+       }
   
-    }
+   }
+
+  
     
   
 }

@@ -6,6 +6,9 @@
 package View;
 
 import Controller.AgendaController;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 
@@ -20,7 +23,7 @@ public class Agenda extends javax.swing.JFrame {
     /**
      * Creates new form Agenda
      */
-    public Agenda() {
+    public Agenda() throws SQLException, ClassNotFoundException {
         initComponents();
         controller = new AgendaController(this);
         iniciar();
@@ -202,7 +205,14 @@ public class Agenda extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Agenda().setVisible(true);
+                
+                try {
+                    new Agenda().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Agenda.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Agenda.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -231,10 +241,10 @@ public class Agenda extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 
-    private void iniciar() {
-        this.controller.atualizaTabela();
-        this.controller.atualizaCliente();
-        this.controller.atualizaServico();
+    private void iniciar() throws SQLException, ClassNotFoundException {
+     this.controller.atualizaTabela();
+      this.controller.atualizaCliente();
+       this.controller.atualizaServico();
     }
 
     public JTable getTableAgendamentos() {

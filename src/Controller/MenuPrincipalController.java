@@ -5,8 +5,13 @@
  */
 package Controller;
 
+import Model.Usuario;
 import View.Agenda;
+import View.CadCliente;
+import View.CadServico;
 import View.MenuPrincipal;
+import View.CadUsuario;
+import java.sql.SQLException;
 
 /**
  *
@@ -19,11 +24,27 @@ public class MenuPrincipalController {
         this.view = view;
     }
     
-    public void navegarParaAgenda()
+    public void navegarParaAgenda() throws SQLException, ClassNotFoundException
     {
         Agenda agenda = new Agenda();
         agenda.setVisible(true);
     }
-    
+
+  public void navegarParaUsuario() {
+      CadUsuario usuario = new CadUsuario();
+      usuario.setVisible(true);
+    }
+  
+  public void navegarParaCliente()
+  {
+      CadCliente cliente = new CadCliente();
+      cliente.setVisible(true);
+  }
+  public void navegarParaServico()
+  {
+      CadServico servico = new CadServico();
+      servico.setVisible(true);
+  }
+   
     
 }
