@@ -32,8 +32,10 @@ public class ServicoController {
     public void salvaServico()
     {
         String descricao = view.getTextServico().getText();
+        String valorString =view.getTextValor().getText();
+        float valor = Float.parseFloat(valorString);
         
-        Servico servicos = new Servico(descricao);
+        Servico servicos = new Servico(descricao,valor);
         
         
            try {

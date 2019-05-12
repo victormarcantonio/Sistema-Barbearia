@@ -33,11 +33,11 @@ public class ClienteDAO {
     public void insert(Cliente cliente) throws SQLException, ClassNotFoundException{
            
           
-            String sql="insert into cliente(nome,endereco,telefone,rg) values('"+cliente.getNome()+"','"+cliente.getEndereco()+"','"+cliente.getTelefone()+"','"+cliente.getRg()+"');";
+       String sql="insert into cliente(nome,endereco,telefone,rg) values('"+cliente.getNome()+"','"+cliente.getEndereco()+"','"+cliente.getTelefone()+"','"+cliente.getRg()+"');";
             
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.execute();
-            connection.close();
+       PreparedStatement statement = connection.prepareStatement(sql);
+       statement.execute();
+       connection.close();
        
     }
     
@@ -80,7 +80,7 @@ public class ClienteDAO {
     public ArrayList<Cliente> selectAll() throws SQLException, ClassNotFoundException{
         
          Connection connection = ConectaBanco.getConexao();
-        String sql = "select nome from cliente";
+        String sql = "select id, nome from cliente";
       PreparedStatement statement = connection.prepareStatement(sql);
        ResultSet rs = statement.executeQuery();
        ArrayList<Cliente>clientes = new ArrayList<Cliente>();
@@ -88,6 +88,7 @@ public class ClienteDAO {
      while(rs.next())
      {
         Cliente cliente = new Cliente();
+        cliente.setId(rs.getInt("id"));
          cliente.setNome(rs.getString("nome"));
          clientes.add(cliente);
          

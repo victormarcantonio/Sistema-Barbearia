@@ -12,35 +12,43 @@ package Model;
 public class Servico {
     private int id;
     private String descricao;
-    private double valor;
+    private float valor;
 
-    public Servico(int id, String descricao, double valor) {
+    public Servico(int id, String descricao, float valor) {
         this.id = id;
         this.descricao = descricao;
         this.valor = valor;
     }
 
-    public Servico(String descricao) {
+    public Servico(String descricao, float valor) {
         this.descricao = descricao;
+        this.valor = valor;
     }
 
     public Servico() {
     }
 
+    public Servico(float valor) {
+        this.valor = valor;
+    }
     
+    
+
     public String getDescricao() {
         return descricao;
     }
+
+   
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
 
-    public double getValor() {
+    public float getValor() {
         return valor;
     }
 
-    public void setValor(double valor) {
+    public void setValor(float valor) {
         this.valor = valor;
     }
 

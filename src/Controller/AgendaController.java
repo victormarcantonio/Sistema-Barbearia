@@ -13,9 +13,14 @@ import Model.DAO.ClienteDAO;
 import Model.DAO.ServicoDAO;
 import Model.Servico;
 import View.Agenda;
+import View.CadUsuario;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import util.ConectaBanco;
 
 /**
  *
@@ -30,7 +35,7 @@ public class AgendaController {
         this.helper = new AgendaHelper(view);
     }
     
-    public void atualizaTabela()
+    public void atualizaTabela() throws ClassNotFoundException, SQLException
    {
        //buscar lista de agendamentos do banco
        AgendamentoDAO agendamentoDAO= new AgendamentoDAO();
@@ -48,7 +53,8 @@ public class AgendaController {
           helper.preencherClientes(clientes);
    }
     
-   public void atualizaServico()
+    
+   public void atualizaServico() throws SQLException, ClassNotFoundException
     {
         ServicoDAO servicoDAO = new ServicoDAO();
        ArrayList<Servico> servicos = servicoDAO.selectAll();
@@ -56,4 +62,40 @@ public class AgendaController {
       helper.preencherServicos(servicos);
        
    }
+   
+    public void atualizaValor()
+    {
+        Servico servico = helper.obterServico();
+        helper.setarValor(servico.getValor());
+    }
+    
+    public void atualizaId()
+    {
+        Cliente cliente = helper.obterCliente();
+        helper.setarId(cliente.getId());
+    }
+
+    public void agendar() throws SQLException, ClassNotFoundException {
+        //Buscar objeto agendamento da tela
+        Agendamento agendamento = helper.obterModelo();
+        
+         try {
+            Connection conexao = new ConectaBanco().getConexao();
+            AgendamentoDAO agendamentoDAO= new AgendamentoDAO(conexao);
+              agendamentoDAO.insert(agendamento);
+              
+              JOptionPane.showMessageDialog(null,"Agendamento cadastrado com sucesso!");
+              
+          } catch (SQLException ex) {
+              Logger.getLogger(CadUsuario.class.getName()).log(Level.SEVERE, null, ex);
+          } catch (ClassNotFoundException ex) {
+            Logger.getLogger(CadUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }    
+        
+        //Salva objeto no banco de dados
+        atualizaTabela();
+        helper.limparTela();
+        
+        
+    }
 }

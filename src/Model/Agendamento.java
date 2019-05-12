@@ -35,6 +35,15 @@ public class Agendamento {
         }
     }
 
+    public Agendamento(int id, Cliente cliente, Servico servico, double valor, String data,String observacao) {
+        this(id,cliente,servico,valor,data);
+        this.observacao = observacao;
+    }
+
+    public Agendamento() {
+    }
+
+    
     
 
     public int getId() {

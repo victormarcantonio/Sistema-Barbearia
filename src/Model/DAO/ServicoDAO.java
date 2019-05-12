@@ -38,7 +38,7 @@ public class ServicoDAO {
      * @param servico exige que seja passado um objeto do tipo servico
      */
     public void insert(Servico servico) throws SQLException{
-        String sql = "insert into servico(descricao)values('"+servico.getDescricao()+"')";
+        String sql = "insert into servico(descricao,valor)values('"+servico.getDescricao()+"','"+servico.getValor()+"')";
         
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.execute();
@@ -48,7 +48,7 @@ public class ServicoDAO {
      public ArrayList<Servico> selectAll() throws SQLException, ClassNotFoundException{
         
          Connection connection = ConectaBanco.getConexao();
-        String sql = "select descricao from servico";
+        String sql = "select id, valor, descricao from servico";
       PreparedStatement statement = connection.prepareStatement(sql);
        ResultSet rs = statement.executeQuery();
        ArrayList<Servico>servicos = new ArrayList<Servico>();
@@ -56,7 +56,9 @@ public class ServicoDAO {
      while(rs.next())
      {
         Servico servico = new Servico();
+        servico.setId(rs.getInt("id"));
          servico.setDescricao(rs.getString("descricao"));
+         servico.setValor(rs.getFloat("valor"));
          servicos.add(servico);
          
      }

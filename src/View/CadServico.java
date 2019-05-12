@@ -47,6 +47,8 @@ public class CadServico extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        LabelId1 = new javax.swing.JLabel();
+        TextValor = new javax.swing.JTextField();
         TextServico = new javax.swing.JTextField();
         LabelAgenda = new javax.swing.JLabel();
         LabelId = new javax.swing.JLabel();
@@ -54,9 +56,22 @@ public class CadServico extends javax.swing.JFrame {
         LabelAgendaPainelFundo = new javax.swing.JLabel();
         LabelAgendaFundo = new javax.swing.JLabel();
         TextValor1 = new javax.swing.JTextField();
+        TextServico1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        LabelId1.setForeground(new java.awt.Color(255, 255, 255));
+        LabelId1.setText("Valor");
+        getContentPane().add(LabelId1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 320, -1, -1));
+
+        TextValor.setToolTipText("");
+        TextValor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextValorActionPerformed(evt);
+            }
+        });
+        getContentPane().add(TextValor, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, 280, 40));
 
         TextServico.setToolTipText("");
         TextServico.addActionListener(new java.awt.event.ActionListener() {
@@ -84,7 +99,7 @@ public class CadServico extends javax.swing.JFrame {
                 ButtonAgendarActionPerformed(evt);
             }
         });
-        getContentPane().add(ButtonAgendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, 160, 30));
+        getContentPane().add(ButtonAgendar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 160, 30));
 
         LabelAgendaPainelFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/imagens/Agenda-PainelFundo.png"))); // NOI18N
         getContentPane().add(LabelAgendaPainelFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-670, 10, 1420, 1000));
@@ -100,6 +115,14 @@ public class CadServico extends javax.swing.JFrame {
             }
         });
         getContentPane().add(TextValor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 410, 280, 40));
+
+        TextServico1.setToolTipText("");
+        TextServico1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextServico1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(TextServico1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 280, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -117,6 +140,14 @@ public class CadServico extends javax.swing.JFrame {
     private void TextServicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextServicoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextServicoActionPerformed
+
+    private void TextServico1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextServico1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextServico1ActionPerformed
+
+    private void TextValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextValorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TextValorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,7 +225,10 @@ public class CadServico extends javax.swing.JFrame {
     private javax.swing.JLabel LabelAgendaFundo;
     private javax.swing.JLabel LabelAgendaPainelFundo;
     private javax.swing.JLabel LabelId;
+    private javax.swing.JLabel LabelId1;
     private javax.swing.JTextField TextServico;
+    private javax.swing.JTextField TextServico1;
+    private javax.swing.JTextField TextValor;
     private javax.swing.JTextField TextValor1;
     // End of variables declaration//GEN-END:variables
 
@@ -204,6 +238,14 @@ public class CadServico extends javax.swing.JFrame {
 
     public void setTextServico(JTextField TextServico) {
         this.TextServico = TextServico;
+    }
+
+    public JTextField getTextValor() {
+        return TextValor;
+    }
+
+    public void setTextValor(JTextField TextValor) {
+        this.TextValor = TextValor;
     }
 
 

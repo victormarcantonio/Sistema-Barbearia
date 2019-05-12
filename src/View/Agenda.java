@@ -10,7 +10,10 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 /**
  *
@@ -106,8 +109,18 @@ public class Agenda extends javax.swing.JFrame {
         });
         getContentPane().add(TextId, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 280, 40));
 
+        JComboBoxCliente.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                JComboBoxClienteItemStateChanged(evt);
+            }
+        });
         getContentPane().add(JComboBoxCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, 280, 40));
 
+        JComboBoxServico.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                JComboBoxServicoItemStateChanged(evt);
+            }
+        });
         getContentPane().add(JComboBoxServico, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 280, 40));
 
         TextValor.setText("0");
@@ -168,12 +181,26 @@ public class Agenda extends javax.swing.JFrame {
     }//GEN-LAST:event_TextIdActionPerformed
 
     private void ButtonAgendarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonAgendarActionPerformed
-        // TODO add your handling code here:
+        try {
+            this.controller.agendar();
+        } catch (SQLException ex) {
+            Logger.getLogger(Agenda.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Agenda.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_ButtonAgendarActionPerformed
 
     private void TextValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextValorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextValorActionPerformed
+
+    private void JComboBoxServicoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_JComboBoxServicoItemStateChanged
+        this.controller.atualizaValor();
+    }//GEN-LAST:event_JComboBoxServicoItemStateChanged
+
+    private void JComboBoxClienteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_JComboBoxClienteItemStateChanged
+        this.controller.atualizaId();
+    }//GEN-LAST:event_JComboBoxClienteItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -242,9 +269,10 @@ public class Agenda extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void iniciar() throws SQLException, ClassNotFoundException {
-     this.controller.atualizaTabela();
+   this.controller.atualizaTabela();
       this.controller.atualizaCliente();
        this.controller.atualizaServico();
+       this.controller.atualizaValor();
     }
 
     public JTable getTableAgendamentos() {
@@ -270,9 +298,46 @@ public class Agenda extends javax.swing.JFrame {
     public void setJComboBoxServico(JComboBox<String> JComboBoxServico) {
         this.JComboBoxServico = JComboBoxServico;
     }
-    
-    
-    
+
+    public JTextField getTextValor() {
+        return TextValor;
+    }
+
+    public void setTextValor(JTextField TextValor) {
+        this.TextValor = TextValor;
+    }
+
+    public JFormattedTextField getTextFormatedData() {
+        return TextFormatedData;
+    }
+
+    public void setTextFormatedData(JFormattedTextField TextFormatedData) {
+        this.TextFormatedData = TextFormatedData;
+    }
+
+    public JFormattedTextField getTextFormatedHora() {
+        return TextFormatedHora;
+    }
+
+    public void setTextFormatedHora(JFormattedTextField TextFormatedHora) {
+        this.TextFormatedHora = TextFormatedHora;
+    }
+
+    public JTextField getTextId() {
+        return TextId;
+    }
+
+    public void setTextId(JTextField TextId) {
+        this.TextId = TextId;
+    }
+
+    public JTextArea getTextObservacao() {
+        return TextObservacao;
+    }
+
+    public void setTextObservacao(JTextArea TextObservacao) {
+        this.TextObservacao = TextObservacao;
+    }
     
     
 }

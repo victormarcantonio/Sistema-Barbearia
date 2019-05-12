@@ -13,3 +13,20 @@ create table cliente(
    telefone varchar(14) not null,
    rg varchar(20) not null	
 );
+
+create table servico(
+   id serial not null primary key,
+   descricao varchar
+);
+
+
+create table agendamento(
+   id serial primary key,
+   id_cliente integer,
+   id_servico integer,
+   valor float,
+   data timestamp,
+  observacao varchar(50),
+   constraint fk_cliente foreign key(id_cliente) references cliente(id),
+   constraint fk_servico foreign key(id_servico) references servico(id)	
+);
